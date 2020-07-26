@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { INITIAL_STATE_FORM } from '../../helpers/constants';
 
-import { onAddContacts } from '../../redux/Contact/contactActions';
+import { onAddContacts } from '../../redux/Contact/contactsOperations';
 
 import s from './ContactForm.module.css';
 
@@ -71,7 +71,7 @@ class ContactForm extends Component {
   }
 }
 
-const mDTP = { onAddContacts: onAddContacts };
+const mDTP = { onAddContacts };
 const mSTP = ({ contacts }) => ({ contacts: contacts.items });
 
 export default connect(mSTP, mDTP)(ContactForm);
