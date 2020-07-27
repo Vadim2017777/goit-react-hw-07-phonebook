@@ -16,9 +16,11 @@ class App extends Component {
 
   render() {
     const showContacts = this.props.contacts.length;
+    const error = this.props.error;
     return (
       <>
         <Header />
+        {error && <h1>Sorry:{error.message}</h1>}
         <Body>
           <ContactListForm />
           {showContacts > 1 && <Filter />}
@@ -30,6 +32,9 @@ class App extends Component {
 }
 
 const mDTP = { fetchContacts: onFetchContacts };
-const mSTP = ({ contacts }) => ({ contacts: contacts.items });
+const mSTP = ({ contacts }) => ({
+  contacts: contacts.items,
+  error: contacts.error,
+});
 
 export default connect(mSTP, mDTP)(App);
