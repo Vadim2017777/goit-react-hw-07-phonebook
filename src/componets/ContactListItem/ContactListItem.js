@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { onRemoveContacts } from '../../redux/Contact/contactActions';
+import { onRemoveContacts } from '../../redux/Contact/contactsOperations';
 
 import styleConxt from '../../contex/ThemeContext';
 

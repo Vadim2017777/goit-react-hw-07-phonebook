@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { onAddToLocalStorage } from '../redux/Contact/contactActions';
+
+import { onFetchContacts } from '../redux/Contact/contactsOperations';
 
 import Header from './Header/Header';
 import Body from './Body/Body';
@@ -10,18 +11,7 @@ import ContactList from './ContactList/ContactList';
 
 class App extends Component {
   componentDidMount() {
-    const localStoregeContacts = localStorage.getItem('contacts');
-    const { onAddToLS } = this.props;
-    if (localStoregeContacts) {
-      onAddToLS(JSON.parse(localStoregeContacts));
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { contacts } = this.props;
-    if (contacts !== prevProps.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(contacts));
-    }
+    this.props.fetchContacts();
   }
 
   render() {
@@ -39,7 +29,7 @@ class App extends Component {
   }
 }
 
-const mDTP = { onAddToLS: onAddToLocalStorage };
+const mDTP = { fetchContacts: onFetchContacts };
 const mSTP = ({ contacts }) => ({ contacts: contacts.items });
 
 export default connect(mSTP, mDTP)(App);

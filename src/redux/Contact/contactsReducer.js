@@ -3,7 +3,8 @@ import { createReducer } from '@reduxjs/toolkit';
 
 import {
   addContactSuccess,
-  onRemoveContacts,
+  removeContactSuccess,
+  fetchContactsSuccess,
   onChangeFilter,
   onAddToLocalStorage,
 } from './contactActions';
@@ -18,8 +19,9 @@ const addToLocalStrg = (state, { payload }) => [...payload];
 const onFilter = (state, { payload }) => payload;
 
 const items = createReducer([], {
+  [fetchContactsSuccess]: (state, { payload }) => payload,
   [addContactSuccess]: addContacts,
-  [onRemoveContacts]: removeContacts,
+  [removeContactSuccess]: removeContacts,
   [onAddToLocalStorage]: addToLocalStrg,
 });
 

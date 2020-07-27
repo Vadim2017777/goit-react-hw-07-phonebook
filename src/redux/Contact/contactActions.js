@@ -1,31 +1,32 @@
 import { createAction } from '@reduxjs/toolkit';
 // import { v4 as uuidv4 } from 'uuid';
 
+const fetchContactsRequest = createAction('contact/contactFetchRequest');
+const fetchContactsSuccess = createAction('contact/contactFetchSuccess');
+const fetchContactsError = createAction('contact/contactFetchSucces');
+
 const addContactRequest = createAction('contact/contactAddRequest');
 const addContactSuccess = createAction('contact/contactAddSuccess');
 const addContactError = createAction('contact/contactAddSucces');
 
-// const onAddContacts = createAction(
-//   'contact/addContacts',
-//   ({ name, number }) => ({
-//     payload: { items: { id: uuidv4(), name, number } },
-//   }),
-// );
-
-const onAddToLocalStorage = createAction('contact/addToLocalStorage');
-
-const onRemoveContacts = createAction('contact/removeContacts');
+const removeContactRequest = createAction('contact/contactRemoveAddRequest');
+const removeContactSuccess = createAction('contact/contactRemoveAddSuccess');
+const removeContactError = createAction('contact/contactRemoveAddSucces');
 
 const onChangeFilter = createAction('contact/changeFilter');
 
 const onChangeTheme = createAction('contact/changeTheme');
 
 export {
+  fetchContactsRequest,
+  fetchContactsSuccess,
+  fetchContactsError,
   addContactRequest,
   addContactSuccess,
   addContactError,
-  // onAddContacts,
-  onRemoveContacts,
+  removeContactRequest,
+  removeContactSuccess,
+  removeContactError,
   onChangeFilter,
   onChangeTheme,
   onAddToLocalStorage,
