@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { onRemoveContacts } from '../../redux/Contact/contactsOperations';
 
+import contactsSelectors from '../../redux/Contact/contactsSelectors';
+
 import styleConxt from '../../contex/ThemeContext';
 
 import s from './ContactListItem.module.css';
@@ -26,9 +28,9 @@ const TaskListItem = ({ theme, name, number, onRemove }) => (
   </li>
 );
 
-const mSTP = ({ contacts, themePhonebook }, { id }) => {
-  const item = contacts.items.find(item => item.id === id);
-  const theme = themePhonebook.theme;
+const mSTP = (state, { id }) => {
+  const item = contactsSelectors.getContactById(state, id);
+  const theme = contactsSelectors.getTheme(state);
 
   return { theme, ...item };
 };

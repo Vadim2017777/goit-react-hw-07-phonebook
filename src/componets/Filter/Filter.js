@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import { onChangeFilter } from '../../redux/Contact/contactActions';
 
+import contactsSelectors from '../../redux/Contact/contactsSelectors';
+
 import s from './Filter.module.css';
 
 const Filter = ({ filter, onChange }) => (
@@ -18,8 +20,8 @@ const Filter = ({ filter, onChange }) => (
   </div>
 );
 
-const mSTP = ({ contacts }) => ({
-  value: contacts.filter,
+const mSTP = state => ({
+  value: contactsSelectors.getContacts(state),
 });
 
 const mDTP = {

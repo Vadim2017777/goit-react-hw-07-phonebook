@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { onFetchContacts } from '../redux/Contact/contactsOperations';
+import contactsSelectors from '../redux/Contact/contactsSelectors';
 
 import Header from './Header/Header';
 import Body from './Body/Body';
@@ -32,9 +33,9 @@ class App extends Component {
 }
 
 const mDTP = { fetchContacts: onFetchContacts };
-const mSTP = ({ contacts }) => ({
-  contacts: contacts.items,
-  error: contacts.error,
+const mSTP = state => ({
+  contacts: contactsSelectors.getContacts(state),
+  error: contactsSelectors.getError(state),
 });
 
 export default connect(mSTP, mDTP)(App);
