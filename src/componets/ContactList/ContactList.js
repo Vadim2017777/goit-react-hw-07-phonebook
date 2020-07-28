@@ -23,7 +23,7 @@ const ContactList = ({ contacts, theme }) => (
     <h2>Contacts</h2>
     <TransitionGroup component="ul">
       {contacts.map(({ id }) => (
-        <CSSTransition key={id} timeout={200} classNames={transition}>
+        <CSSTransition key={id} timeout={250} classNames={transition}>
           <ContactListItem key={id} id={id} />
         </CSSTransition>
       ))}

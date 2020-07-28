@@ -20,7 +20,6 @@ const onFetchContacts = () => dispatch => {
   axios
     .get('/contacts')
     .then(({ data }) => {
-      console.log(data);
       dispatch(fetchContactsSuccess(data));
     })
     .catch(error => dispatch(fetchContactsError(error)));
@@ -31,9 +30,8 @@ const onAddContacts = ({ name, number }) => dispatch => {
 
   axios
     .post('/contacts', { name, number })
-    .then(response => {
-      console.log(response.data);
-      dispatch(addContactSuccess(response.data));
+    .then(({ data }) => {
+      dispatch(addContactSuccess(data));
     })
     .catch(error => dispatch(addContactError(error)));
 };
