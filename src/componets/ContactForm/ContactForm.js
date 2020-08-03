@@ -11,7 +11,7 @@ import s from './ContactForm.module.css';
 
 class ContactForm extends Component {
   state = {
-    ...INITIAL_STATE_FORM,
+    INITIAL_STATE_FORM,
   };
 
   handleInputChange = ({ target }) => {
@@ -33,7 +33,7 @@ class ContactForm extends Component {
   };
 
   reset = () => {
-    this.setState({ ...INITIAL_STATE_FORM });
+    this.setState({ INITIAL_STATE_FORM });
   };
 
   render() {
